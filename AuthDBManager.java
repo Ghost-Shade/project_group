@@ -203,7 +203,7 @@ public class AuthDBManager {
         private String profilePicture;
         
         public User(int userId, String username, String fullName, String email, 
-                   String department, String jobTitle, String profilePicture) {
+        String department, String jobTitle, String profilePicture) {
             this.userId = userId;
             this.username = username;
             this.fullName = fullName;

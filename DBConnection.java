@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 public class DBConnection {
     private static final String URL = "jdbc:mysql://localhost:3306/etes_db";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "102050880"; // Change to your MySQL password
+    private static final String PASSWORD = ""; // Use the password for your Sql
     
     private static Connection connection = null;
     
@@ -52,7 +52,7 @@ public class DBConnection {
         }
     }
     
-    // Test connection
+    // Test connection  
     public static boolean testConnection() {
         try {
             Connection conn = getConnection();
