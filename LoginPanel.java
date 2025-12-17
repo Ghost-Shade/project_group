@@ -150,8 +150,8 @@ public class LoginPanel extends JPanel {
             return;
         }
         
-        AuthManager auth = new AuthManager();
-        AuthManager.User user = auth.login(username, password);
+        AuthDBManager auth = new AuthDBManager();
+        AuthDBManager.User user = auth.login(username, password);
         
         if (user != null) {
             if (onLoginSuccess != null) {

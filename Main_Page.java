@@ -113,6 +113,13 @@ public class Main_Page extends javax.swing.JFrame {
         highlightActiveButton(LearnModulesBtn);
     }
     
+    private void loadUserData(){
+        AuthDBManager.User currentUser = AuthDBManager.getCurrentUser();
+        if(currentUser != null){
+            jLabel1.setText("Welcome, "+currentUser.getFullName());
+        }
+    }
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Main_Page.class.getName());
     /**
      * Creates new form Main_Page
@@ -138,7 +145,8 @@ public class Main_Page extends javax.swing.JFrame {
 //        cardLayout = (CardLayout) mainContentPanel.getLayout();
         setupMainContentArea();
         initializePanels();
-//        setupNavigation(); 
+//        setupNavigation();
+        loadUserData();
         
         cardLayout.show(mainContentPanel, "Dashboard");
         highlightActiveButton(DashboardButton);//DashboardButton

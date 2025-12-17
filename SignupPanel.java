@@ -189,8 +189,8 @@ public class SignupPanel extends JPanel {
             return;
         }
         
-        AuthManager auth = new AuthManager();
-        boolean success = auth.register(username, password, fullName, email);
+        AuthDBManager auth = new AuthDBManager();
+        boolean success = auth.register(username, password, fullName, email, "", "");
         
         if (success) {
             JOptionPane.showMessageDialog(this, 

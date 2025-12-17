@@ -1,74 +1,39 @@
 package project_group;
 
 import java.awt.*;
+import java.util.List;
 import javax.swing.*;
-
 public class LearningModulesPanels extends JPanel {
+    private CourseDBManager courseDBManager;
+    private AuthDBManager.User currentUser;
+    
     private Main_Page mainPage;
     
     // Constructor
     public LearningModulesPanels() {
+        courseDBManager = new CourseDBManager();
+        currentUser =AuthDBManager.getCurrentUser();
         initComponents();
     }
     
-    
     private void initComponents() {
-    setLayout(new BorderLayout());
-    setBackground(new Color(245, 245, 245));
-    
-    // Header panel
-    JPanel headerPanel = createHeaderPanel();
-    
-    // Main content panel - use BoxLayout like SettingsPanel
-    JPanel mainContent = new JPanel();
-    mainContent.setLayout(new BoxLayout(mainContent, BoxLayout.Y_AXIS));
-    mainContent.setBackground(new Color(245, 245, 245));
-    
-    // Add modules
-    ModuleCard[] modules = {
-        new ModuleCard("Java Programming Fundamentals", 
-                      "Learn core Java concepts including OOP, data structures, and basic algorithms.",
-                      "Technical Skills", "Beginner", 3, 4.2, true),
-        // ... add all modules
-    };
-    
-    for (ModuleCard module : modules) {
-        mainContent.add(module);
-        mainContent.add(Box.createVerticalStrut(15));
+        setLayout(new BorderLayout());
+        setBackground(new Color(245, 245, 245));
+        
+        // Create header with search and filters
+        JPanel headerPanel = createHeaderPanel();
+        
+        // Create main content area with module cards
+        JPanel contentPanel = createContentPanel();
+        
+        JScrollPane scrollPane = new JScrollPane(contentPanel);
+        scrollPane.setBorder(null);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        
+        add(headerPanel, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
     }
-    
-    // Add flexible space at bottom
-    mainContent.add(Box.createVerticalGlue());
-    
-    // Wrap in JScrollPane EXACTLY like SettingsPanel
-    JScrollPane scrollPane = new JScrollPane(mainContent);
-    scrollPane.setBorder(null);
-    scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-    scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    
-    add(headerPanel, BorderLayout.NORTH);
-    add(scrollPane, BorderLayout.CENTER);
-}
-
-// setMaximumSize(new Dimension(Integer.MAX_VALUE, 150));
-//    private void initComponents() {
-//        setLayout(new BorderLayout());
-//        setBackground(new Color(245, 245, 245));
-//        
-//        // Create header with search and filters
-//        JPanel headerPanel = createHeaderPanel();
-//        
-//        // Create main content area with module cards
-//        JPanel contentPanel = createContentPanel();
-//        JScrollPane scrollPane = new JScrollPane(contentPanel);
-//        scrollPane.setBorder(null);
-//        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-//        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-//        
-//        
-//        add(headerPanel, BorderLayout.NORTH);
-//        add(scrollPane, BorderLayout.CENTER);
-//    }
     
     private JPanel createHeaderPanel() {
         JPanel header = new JPanel(new BorderLayout());
@@ -110,36 +75,57 @@ public class LearningModulesPanels extends JPanel {
         return header;
     }
     
+    
+///Displays Modules Manually
+//    private JPanel createContentPanel() {
+//        JPanel content = new JPanel();
+//        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+//        content.setBackground(new Color(245, 245, 245));
+//        content.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//        
+//        // Create sample modules
+//        ModuleCard[] modules = {
+//            new ModuleCard("Java Programming Fundamentals", 
+//                          "Learn core Java concepts including OOP, data structures, and basic algorithms.",
+//                          "Technical Skills", "Beginner", 3, 4.2, true),
+//            new ModuleCard("Effective Communication", 
+//                          "Master professional communication skills for workplace success.",
+//                          "Communication", "Intermediate", 2, 4.5, false),
+//            new ModuleCard("Project Management Basics", 
+//                          "Essential project management principles and methodologies.",
+//                          "Leadership", "Beginner", 4, 4.0, true),
+//            new ModuleCard("Advanced Data Analysis", 
+//                          "Learn advanced techniques for data analysis and visualization.",
+//                          "Technical Skills", "Advanced", 5, 4.7, false),
+//            new ModuleCard("Team Leadership", 
+//                          "Develop leadership skills to manage and motivate teams effectively.",
+//                          "Leadership", "Intermediate", 3, 4.3, true)
+//        };
+//        
+//        for (ModuleCard module : modules) {
+//            content.add(module);
+//            content.add(Box.createVerticalStrut(15));
+//        }
+//        
+//        return content;
+//    }
+    
     private JPanel createContentPanel() {
         JPanel content = new JPanel();
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         content.setBackground(new Color(245, 245, 245));
         content.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        // Create sample modules
-        ModuleCard[] modules = {
-            new ModuleCard("Java Programming Fundamentals", 
-                          "Learn core Java concepts including OOP, data structures, and basic algorithms.",
-                          "Technical Skills", "Beginner", 3, 4.2, true),
-            new ModuleCard("Effective Communication", 
-                          "Master professional communication skills for workplace success.",
-                          "Communication", "Intermediate", 2, 4.5, false),
-            new ModuleCard("Project Management Basics", 
-                          "Essential project management principles and methodologies.",
-                          "Leadership", "Beginner", 4, 4.0, true),
-            new ModuleCard("Advanced Data Analysis", 
-                          "Learn advanced techniques for data analysis and visualization.",
-                          "Technical Skills", "Advanced", 5, 4.7, false),
-            new ModuleCard("Team Leadership", 
-                          "Develop leadership skills to manage and motivate teams effectively.",
-                          "Leadership", "Intermediate", 3, 4.3, true)
-        };
-        
-        for (ModuleCard module : modules) {
-            content.add(module);
+        List<CourseDBManager.Course> courses = courseDBManager.getAllCourses();
+        for (CourseDBManager.Course course : courses){
+            boolean isEnrolled = false;
+            if (currentUser != null ){
+                isEnrolled = courseDBManager.isUserEnrolled(currentUser.getUserId(), course.getCourseId());
+            }
+            
+            content.add(new ModuleCard(course, isEnrolled));
             content.add(Box.createVerticalStrut(15));
         }
-        
         return content;
     }
     
@@ -151,25 +137,25 @@ public class LearningModulesPanels extends JPanel {
     private class ModuleCard extends JPanel {
         private JButton actionButton;
         
-        public ModuleCard(String title, String description, String category, 
-                         String level, int hours, double rating, boolean enrolled) {
+        public ModuleCard(CourseDBManager.Course course, boolean enrolled) {
             setLayout(new BorderLayout());
             setBackground(Color.WHITE);
             setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(Color.LIGHT_GRAY),
                 BorderFactory.createEmptyBorder(15, 15, 15, 15)
             ));
+            
             setMaximumSize(new Dimension(Integer.MAX_VALUE, 150));
             
             // Left side: Title and description
             JPanel leftPanel = new JPanel(new BorderLayout());
             leftPanel.setBackground(Color.WHITE);
             
-            JLabel titleLabel = new JLabel(title);
+            JLabel titleLabel = new JLabel(course.getTitle());
             titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
             titleLabel.setForeground(new Color(44, 62, 80));
             
-            JTextArea descArea = new JTextArea(description);
+            JTextArea descArea = new JTextArea(course.getDescription());
             descArea.setFont(new Font("Segoe UI", Font.PLAIN, 11));
             descArea.setForeground(new Color(127, 140, 141));
             descArea.setLineWrap(true);
@@ -186,13 +172,14 @@ public class LearningModulesPanels extends JPanel {
             rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
             rightPanel.setBackground(Color.WHITE);
             
-            // Rating
-            JLabel ratingLabel = new JLabel("★ " + rating);
-            ratingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            
+           //Category and Level
+            JLabel metaLabel = new JLabel(course.getCategory() + "|" + course.getDifficultyLevel());
+            metaLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
             
             // Duration and level
-            JLabel metaLabel = new JLabel("⏱ " + hours + " hours | 📊 " + level);
-            metaLabel.setFont(new Font("Segoe UI", Font.PLAIN, 11));
+            JLabel durationLabel = new JLabel("⏱ " + course.getDurationHours() + "hours");
+            durationLabel.setFont(new Font("Segoe UI", Font.PLAIN, 11));
             
             // Action button
             if (enrolled) {
@@ -208,12 +195,30 @@ public class LearningModulesPanels extends JPanel {
             
             // Add action listener to button
             actionButton.addActionListener(e -> {
-                if (mainPage != null) {
-                    mainPage.showModulePlayer();
+                if (currentUser != null) {
+                    if (enrolled){
+//                        openModulePlayer(course.getCourseId());
+                        mainPage.showModulePlayer();
+                    }else {
+                        boolean success = courseDBManager.enrollUserInCourse(currentUser.getUserId(),course.getCourseId());
+                        if(success){
+                            JOptionPane.showMessageDialog(ModuleCard.this,
+                                    "Successfully enrolled in "+course.getTitle(),
+                                    "Enrolled",
+                                    JOptionPane.INFORMATION_MESSAGE);
+                            actionButton.setText("Continue");
+                            actionButton.setBackground(new Color(52,152,219));
+                        }
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(ModuleCard.this,
+                            "Please Login First",
+                            "Authentication Required",
+                            JOptionPane.WARNING_MESSAGE);
                 }
             });
             
-            rightPanel.add(ratingLabel);
+            rightPanel.add(durationLabel);
             rightPanel.add(Box.createVerticalStrut(5));
             rightPanel.add(metaLabel);
             rightPanel.add(Box.createVerticalStrut(10));
