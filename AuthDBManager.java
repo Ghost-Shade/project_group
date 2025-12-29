@@ -1,3 +1,28 @@
+
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
 package project_group;
 
 import java.security.MessageDigest;
@@ -13,7 +38,7 @@ public class AuthDBManager {
         conn = DBConnection.getConnection();
     }
     
-    // Hash password using SHA-256
+    // Hash password using Sha-256 Algorithm
     private String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -28,7 +53,7 @@ public class AuthDBManager {
             
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
-            return password; // Fallback (not secure)
+            return password; 
         }
     }
     
@@ -51,7 +76,7 @@ public class AuthDBManager {
             
             int rowsAffected = pstmt.executeUpdate();
             
-            // Add welcome achievement
+            // Add welcome achievement for the first time logging in 
             if (rowsAffected > 0) {
                 addUserAchievement(getUserId(username), "welcome", "New Learner Badge");
                 addUserPoints(getUserId(username), "achievement", 100, "Account creation bonus");
@@ -88,10 +113,8 @@ public class AuthDBManager {
             ResultSet rs = pstmt.executeQuery();
             
             if (rs.next()) {
-                // Update last login
                 updateLastLogin(rs.getInt("user_id"));
                 
-                // Create user object
                 User user = new User(
                     rs.getInt("user_id"),
                     rs.getString("username"),
@@ -120,7 +143,6 @@ public class AuthDBManager {
         }
     }
     
-    // Update last login timestamp
     private void updateLastLogin(int userId) {
         String sql = "UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE user_id = ?";
         
@@ -133,7 +155,6 @@ public class AuthDBManager {
         }
     }
     
-    // Get user ID by username
     private int getUserId(String username) {
         String sql = "SELECT user_id FROM users WHERE username = ?";
         

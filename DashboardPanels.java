@@ -1,3 +1,28 @@
+
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
 package project_group;
 
 import java.awt.*;
@@ -15,17 +40,17 @@ public class DashboardPanels extends JPanel {
     setLayout(new BorderLayout());
     setBackground(new Color(245, 245, 245));
     
-    // Create main panel that will hold ALL cards
+    //  main panel that will holds ALL cards
     JPanel cardsContainer = new JPanel();
     cardsContainer.setLayout(new BoxLayout(cardsContainer, BoxLayout.Y_AXIS));
     cardsContainer.setBackground(new Color(245, 245, 245));
     
-    // Create a panel for the 2x3 grid of cards
+    //  panel for the 2x3 grid of cards
     JPanel gridPanel = new JPanel(new GridLayout(2, 3, 15, 15));
     gridPanel.setBackground(new Color(245, 245, 245));
     gridPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
     
-    // Create 6 cards - REMOVE ALL setMaximumSize calls!
+    // 6 cards 
     gridPanel.add(createCard("Your Learning Path", createLearningPathContent()));
     gridPanel.add(createCard("Recommended for You", createRecommendationsContent()));
     gridPanel.add(createCard("Recent Activity", createRecentActivityContent()));
@@ -33,13 +58,13 @@ public class DashboardPanels extends JPanel {
     gridPanel.add(createCard("Team Overview", createTeamOverviewContent()));
     gridPanel.add(createCard("Quick Actions", createQuickActionsContent()));
     
-    // Add grid panel to container
+    
     cardsContainer.add(gridPanel);
     
-    // Add flexible space at bottom
+    
     cardsContainer.add(Box.createVerticalGlue());
     
-    // Wrap in JScrollPane EXACTLY like SettingsPanel
+    // Wrap in JScrollPane 
     JScrollPane scrollPane = new JScrollPane(cardsContainer);
     scrollPane.setBorder(null);
     scrollPane.getVerticalScrollBar().setUnitIncrement(16);

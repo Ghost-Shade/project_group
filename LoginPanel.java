@@ -1,3 +1,28 @@
+
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
 package project_group;
 
 import java.awt.*;
@@ -39,7 +64,7 @@ public class LoginPanel extends JPanel {
         // Login Form Panel
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
-        formPanel.setBackground(new Color(255, 255, 255, 200)); // Semi-transparent white
+        formPanel.setBackground(new Color(255, 255, 255, 200)); 
         formPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         formPanel.setMaximumSize(new Dimension(400, 350));
         
@@ -50,7 +75,7 @@ public class LoginPanel extends JPanel {
         
         // Username field
         JPanel usernamePanel = new JPanel(new BorderLayout(10, 0));
-        usernamePanel.setBackground(new Color(255, 255, 255, 0)); // Transparent
+        usernamePanel.setBackground(new Color(255, 255, 255, 0)); 
         JLabel lblUsername = new JLabel("👤 Username");
         lblUsername.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         txtUsername = new JTextField();

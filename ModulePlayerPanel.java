@@ -1,4 +1,29 @@
 
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
+
 package project_group;
 
 import java.awt.*;
@@ -108,6 +133,8 @@ public class ModulePlayerPanel extends JPanel {
             "- Your birth year (int)\n" +
             "- Your height in meters (double)\n" +
             "- Whether you like Java (boolean)"
+                
+             
         );
         lessonContent.setFont(new Font("Monospaced", Font.PLAIN, 13));
         lessonContent.setLineWrap(true);
@@ -187,6 +214,7 @@ public class ModulePlayerPanel extends JPanel {
         JPanel footer = new JPanel(new BorderLayout());
         footer.setBackground(new Color(245, 245, 245));
         footer.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
+        footer.setPreferredSize(new Dimension(1200,700));
         
         // Previous button
         JButton prevButton = new JButton("◀ Previous Lesson");

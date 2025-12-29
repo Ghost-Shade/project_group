@@ -1,3 +1,30 @@
+
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
+
+
 package project_group;
 
 import java.awt.*;
@@ -51,7 +78,7 @@ public class SignupPanel extends JPanel {
         lblTitle.setForeground(new Color(0, 102, 255));
         lblTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        // Create form fields with labels
+        //  form fields with labels
         JPanel[] fieldPanels = new JPanel[5];
         String[] labels = {"👤 Full Name", "📧 Email", "👤 Username", "🔒 Password", "🔒 Confirm Password"};
         JTextField[] fields = new JTextField[5];
@@ -108,7 +135,7 @@ public class SignupPanel extends JPanel {
         btnSignup.setMaximumSize(new Dimension(Integer.MAX_VALUE, 45));
         btnSignup.addActionListener(e -> performSignup());
         
-        // Login link
+        // Login
         JPanel loginPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
         loginPanel.setBackground(new Color(255, 255, 255, 0));
         loginPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
@@ -122,13 +149,13 @@ public class SignupPanel extends JPanel {
         btnLogin.setBorderPainted(false);
         btnLogin.setContentAreaFilled(false);
         btnLogin.addActionListener(e -> {
-            if (onShowLogin != null) onShowLogin.run();
+            if (onShowLogin != null){ onShowLogin.run();}
         });
         
         loginPanel.add(lblHaveAccount);
         loginPanel.add(btnLogin);
         
-        // Add everything to form panel
+        // Adding to form panel
         formPanel.add(lblTitle);
         formPanel.add(Box.createVerticalStrut(25));
         for (JPanel fieldPanel : fieldPanels) {
@@ -138,7 +165,7 @@ public class SignupPanel extends JPanel {
         formPanel.add(btnSignup);
         formPanel.add(loginPanel);
         
-        // Add everything to main container
+        // Adding to main container
         mainContainer.add(lblLogo);
         mainContainer.add(Box.createVerticalStrut(10));
         mainContainer.add(lblSubtitle);
@@ -180,7 +207,7 @@ public class SignupPanel extends JPanel {
             return;
         }
         
-        // Email validation (simple)
+        // Email validation 
         if (!email.contains("@") || !email.contains(".")) {
             JOptionPane.showMessageDialog(this, 
                 "Please enter a valid email address", 

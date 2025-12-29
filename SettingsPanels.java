@@ -1,3 +1,28 @@
+
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
 package project_group;
 
 import java.awt.*;
@@ -13,10 +38,10 @@ public class SettingsPanels extends JPanel {
         setLayout(new BorderLayout());
         setBackground(new Color(245, 245, 245));
         
-        // Create header
+        //  header
         JPanel headerPanel = createHeader();
         
-        // Create main content
+        //  main content
         JPanel mainContent = createMainContent();
         JScrollPane scrollPane = new JScrollPane(mainContent);
         
@@ -59,7 +84,7 @@ public class SettingsPanels extends JPanel {
         mainContent.setBackground(new Color(245, 245, 245));
         mainContent.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
         
-        // Add all settings cards
+        // Adding settings cards
         mainContent.add(createProfileCard());
         mainContent.add(Box.createVerticalStrut(15));
         mainContent.add(createSecurityCard());

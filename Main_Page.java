@@ -1,4 +1,29 @@
 
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
+
 package project_group;
 import java.awt.*;
 import javax.swing.*;
@@ -93,7 +118,7 @@ public class Main_Page extends javax.swing.JFrame {
         JButton[] buttons = {LogoutButton, SettingsButton, LeaderBoardBtn, ProgressAnalyBtn, LearnModulesBtn, DashboardButton};
         
         for(JButton button : buttons){
-            button.setBackground(new Color(0,102,255)); //Orif=ginal Color
+            button.setBackground(new Color(0,102,255)); 
             button.setForeground(Color.BLACK);
 //            button.setFont(new Font());
         }
@@ -103,8 +128,8 @@ public class Main_Page extends javax.swing.JFrame {
 //        activeButton.setFont(new Font());
     }
     
-    public void showModulePlayer(){
-        cardLayout.show(mainContentPanel, "ModulePlayer");
+    public void showModulePlayer(int courseId){
+        cardLayout.show(mainContentPanel, "Reading");
         //We Do not Highlight the Module Player Buttons becaues it isnt in the Main Nav
     }
     
@@ -419,9 +444,9 @@ public class Main_Page extends javax.swing.JFrame {
         
     }//GEN-LAST:event_LogoutButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+//    /**
+//     * @param args the command line arguments
+//     */
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

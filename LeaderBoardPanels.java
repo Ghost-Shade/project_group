@@ -1,3 +1,28 @@
+
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
 package project_group;
 
 import java.awt.*;
@@ -18,7 +43,7 @@ public class LeaderBoardPanels extends JPanel {
     // Header
     JPanel headerPanel = createHeader();
     
-    // Main content - use BoxLayout EXACTLY like SettingsPanel
+    // Main content - 
     JPanel mainContent = new JPanel();
     mainContent.setLayout(new BoxLayout(mainContent, BoxLayout.Y_AXIS));
     mainContent.setBackground(new Color(245, 245, 245));
@@ -38,7 +63,7 @@ public class LeaderBoardPanels extends JPanel {
     // Add flexible space
     mainContent.add(Box.createVerticalGlue());
     
-    // Wrap in JScrollPane EXACTLY like SettingsPanel
+    // Wrap in JScrollPane 
     JScrollPane scrollPane = new JScrollPane(mainContent);
     scrollPane.setBorder(null);
     scrollPane.getVerticalScrollBar().setUnitIncrement(16);
@@ -89,19 +114,16 @@ public class LeaderBoardPanels extends JPanel {
         mainContent.setBackground(new Color(245, 245, 245));
         mainContent.setBorder(BorderFactory.createEmptyBorder(0, 15, 15, 15));
         
-        // Podium card
+        
         mainContent.add(createPodiumCard());
         mainContent.add(Box.createVerticalStrut(15));
         
-        // Your ranking card
         mainContent.add(createYourRankingCard());
         mainContent.add(Box.createVerticalStrut(15));
         
-        // Leaderboard table card
         mainContent.add(createLeaderboardTableCard());
         mainContent.add(Box.createVerticalStrut(15));
         
-        // Badges card
         mainContent.add(createBadgesCard());
         
         return mainContent;
@@ -261,24 +283,12 @@ public class LeaderBoardPanels extends JPanel {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.WHITE);
         
-        // Create table data
+        //  table data
         String[] columns = {"Rank", "Name", "Department", "Points", "Trend"};
         Object[][] data = {
             {1, "Johnstone", "Engineering", 1650, "▲2"},
-            {2, "Sarah Johnson", "Marketing", 1450, "▼1"},
-            {3, "Mike Chen", "Sales", 1380, "▲3"},
-            {4, "Lisa Wang", "HR", 1320, "►0"},
-            {5, "Alex Kim", "Engineering", 1290, "▲1"},
-            {6, "Maria Garcia", "Finance", 1270, "▼2"},
-            {7, "David Kim", "Engineering", 1265, "▲1"},
-            {8, "Emily Brown", "Marketing", 1260, "►0"},
-            {9, "James Wilson", "Sales", 1258, "▼1"},
-            {10, "Sarah Thompson", "HR", 1255, "▲2"},
-            {11, "Robert Davis", "Engineering", 1253, "▼1"},
-            {12, "Jennifer Lee", "Marketing", 1252, "►0"},
-            {13, "Michael Clark", "Sales", 1251, "▲1"},
-            {14, "Amanda White", "Finance", 1248, "▼2"},
-            {15, "Jamson (You)", "Engineering", 1245, "▲2"}
+            {2, "June", "Technology", 1580, "▲2"},
+            {3, "Jamson (You)", "Engineering", 1245, "▲2"}
         };
         
         DefaultTableModel model = new DefaultTableModel(data, columns) {

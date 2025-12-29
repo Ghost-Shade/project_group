@@ -1,3 +1,28 @@
+
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
 package project_group;
 
 import java.awt.*;
@@ -9,7 +34,7 @@ public class LearningModulesPanels extends JPanel {
     
     private Main_Page mainPage;
     
-    // Constructor
+    // The class's Constructor
     public LearningModulesPanels() {
         courseDBManager = new CourseDBManager();
         currentUser =AuthDBManager.getCurrentUser();
@@ -20,10 +45,10 @@ public class LearningModulesPanels extends JPanel {
         setLayout(new BorderLayout());
         setBackground(new Color(245, 245, 245));
         
-        // Create header with search and filters
+        // header with search and filters
         JPanel headerPanel = createHeaderPanel();
         
-        // Create main content area with module cards
+        // main content area with module cards
         JPanel contentPanel = createContentPanel();
         
         JScrollPane scrollPane = new JScrollPane(contentPanel);
@@ -76,7 +101,7 @@ public class LearningModulesPanels extends JPanel {
     }
     
     
-///Displays Modules Manually
+///Displays Modules Manually if Database does not exist
 //    private JPanel createContentPanel() {
 //        JPanel content = new JPanel();
 //        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
@@ -193,12 +218,12 @@ public class LearningModulesPanels extends JPanel {
             actionButton.setFocusPainted(false);
             actionButton.setMaximumSize(new Dimension(100, 30));
             
-            // Add action listener to button
+            // launch the course button
             actionButton.addActionListener(e -> {
                 if (currentUser != null) {
                     if (enrolled){
 //                        openModulePlayer(course.getCourseId());
-                        mainPage.showModulePlayer();
+                        mainPage.showModulePlayer(course.getCourseId());
                     }else {
                         boolean success = courseDBManager.enrollUserInCourse(currentUser.getUserId(),course.getCourseId());
                         if(success){

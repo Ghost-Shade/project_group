@@ -1,3 +1,28 @@
+
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
 package project_group;
 
 import java.sql.*;
@@ -12,7 +37,7 @@ public class CourseDBManager {
         conn = DBConnection.getConnection();
     }
     
-    // Get all courses
+    // Get all courses from the Database
     public List<Course> getAllCourses() {
         List<Course> courses = new ArrayList<>();
         String sql = "SELECT * FROM courses WHERE is_published = TRUE ORDER BY created_at DESC";
@@ -72,7 +97,7 @@ public class CourseDBManager {
         return courses;
     }
     
-    // Get course by ID
+    // Get course by its ID
     public Course getCourseById(int courseId) {
         String sql = "SELECT * FROM courses WHERE course_id = ?";
         
@@ -133,7 +158,7 @@ public class CourseDBManager {
     
     // Enroll user in course
     public boolean enrollUserInCourse(int userId, int courseId) {
-        // Check if already enrolled
+        // Checks if already enrolled
         if (isUserEnrolled(userId, courseId)) {
             JOptionPane.showMessageDialog(null, 
                 "You are already enrolled in this course!", 
@@ -213,7 +238,7 @@ public class CourseDBManager {
         return enrollments;
     }
     
-    // Update user progress
+    // Updating user progress
     public boolean updateUserProgress(int userId, int moduleId, int courseId, double score, int timeSpent) {
         String sql = "INSERT INTO user_progress (user_id, module_id, course_id, score, time_spent_minutes) " +
                      "VALUES (?, ?, ?, ?, ?) " +
@@ -232,7 +257,7 @@ public class CourseDBManager {
             
             int rowsAffected = pstmt.executeUpdate();
             
-            // Update overall course progress
+            // Updating overall course progress
             updateCourseProgress(userId, courseId);
             
             return rowsAffected > 0;
@@ -242,7 +267,7 @@ public class CourseDBManager {
         }
     }
     
-    // Update overall course progress
+    // Updating overall course progress
     private void updateCourseProgress(int userId, int courseId) {
         String sql = "UPDATE user_enrollments ue " +
                      "SET progress_percentage = (" +
@@ -322,7 +347,7 @@ public class CourseDBManager {
             this.instructorName = instructorName;
         }
         
-        // Getters
+        
         public int getCourseId() { return courseId; }
         public String getCourseCode() { return courseCode; }
         public String getTitle() { return title; }
@@ -355,7 +380,7 @@ public class CourseDBManager {
             this.estimatedTimeMinutes = estimatedTimeMinutes;
         }
         
-        // Getters
+        
         public int getModuleId() { return moduleId; }
         public int getCourseId() { return courseId; }
         public int getModuleOrder() { return moduleOrder; }
@@ -388,7 +413,6 @@ public class CourseDBManager {
             this.status = status;
         }
         
-        // Getters
         public int getEnrollmentId() { return enrollmentId; }
         public int getUserId() { return userId; }
         public int getCourseId() { return courseId; }

@@ -1,3 +1,28 @@
+
+/*
+    GROUP NAME: LOUCIOUS
+UNIT: OBJECT ORIENTED PROGRAMMING II
+DATE: 19/12/2025
+
+MEMBERS:
+
+JAMSON ANJERA:            CCS/00039/024
+JOHNSTON ODHIAMBO :       CCT/00012/024
+JUNE JEPKOSGEI RUTO :     ESC/00389/024
+ALPHONCE KIOKO:           CCT/00070/024
+
+*/
+
+/*
+        PLEASE NOTE THAT!!!
+INORDER FOR THE APPLICATION TO RUN THERE MUST EXIST A DATABASE IN THE LOCAL MACHINE.
+I HAVE INCLUDED THE DATABASE MODIFICATION QUERIES IN A FOLDER KNOWN AS "database".
+YOU CAN USE THOSE QUERIES TO CREATE A DATABASE.
+AGAIN INORDER TO RUN THE APPLICATION YOU MUST START WITH THE AuthFrame.java FILE and Log in BEFORE PROCEEDING.
+
+
+*/
+
 package project_group;
 
 import java.awt.*;
@@ -17,7 +42,7 @@ public class ProgressAnalyticsPanels extends JPanel {
     // Sidebar
     JPanel sidebar = createSidebar();
     
-    // Main content - use BoxLayout EXACTLY like SettingsPanel
+    // Main content - 
     JPanel mainContent = new JPanel();
     mainContent.setLayout(new BoxLayout(mainContent, BoxLayout.Y_AXIS));
     mainContent.setBackground(new Color(245, 245, 245));
@@ -39,7 +64,7 @@ public class ProgressAnalyticsPanels extends JPanel {
     // Add flexible space
     mainContent.add(Box.createVerticalGlue());
     
-    // Wrap in JScrollPane EXACTLY like SettingsPanel
+    // Wrap in JScrollPane 
     JScrollPane scrollPane = new JScrollPane(mainContent);
     scrollPane.setBorder(null);
     scrollPane.getVerticalScrollBar().setUnitIncrement(16);
@@ -74,7 +99,8 @@ public class ProgressAnalyticsPanels extends JPanel {
         sidebar.setBorder(BorderFactory.createEmptyBorder(20, 15, 20, 15));
         
         // User profile
-        JLabel userLabel = new JLabel("👤 John Doe");
+        AuthDBManager.User currentUser = AuthDBManager.getCurrentUser();
+        JLabel userLabel = new JLabel("👤 "+currentUser.getFullName());
         userLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
         userLabel.setForeground(Color.WHITE);
         userLabel.setAlignmentX(Component.LEFT_ALIGNMENT);

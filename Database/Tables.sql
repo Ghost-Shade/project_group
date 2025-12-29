@@ -95,26 +95,26 @@ CREATE TABLE user_achievements (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
--- Insert sample data
--- INSERT INTO users (username, password_hash, full_name, email, department, job_title) VALUES
--- ('admin', 'admin123', 'System Administrator', 'admin@company.com', 'IT', 'System Admin'),
--- ('john.doe', 'password123', 'John Doe', 'john.doe@company.com', 'Engineering', 'Software Developer'),
--- ('sarah.j', 'password123', 'Sarah Johnson', 'sarah.j@company.com', 'Marketing', 'Marketing Manager');
+Insert sample data
+INSERT INTO users (username, password_hash, full_name, email, department, job_title) VALUES
+('admin', 'admin123', 'System Administrator', 'admin@company.com', 'IT', 'System Admin'),
+('john.doe', 'password123', 'John Doe', 'john.doe@company.com', 'Engineering', 'Software Developer'),
+('sarah.j', 'password123', 'Sarah Johnson', 'sarah.j@company.com', 'Marketing', 'Marketing Manager');
 
  INSERT INTO courses (course_code, title, description, category, difficulty_level, duration_hours, instructor_name) VALUES
 ('JAVA101', 'Java Programming Fundamentals', 'Learn core Java concepts including OOP, data structures, and basic algorithms.', 'Technical Skills', 'Beginner', 3.0, 'Prof. James Wilson'),
 ('COMM201', 'Effective Communication', 'Master professional communication skills for workplace success.', 'Communication', 'Intermediate', 2.0, 'Dr. Emily Brown'),
 ('PM301', 'Project Management Basics', 'Essential project management principles and methodologies.', 'Leadership', 'Beginner', 4.0, 'Alex Rodriguez');
 
--- INSERT INTO modules (course_id, module_order, title, content_type, content, estimated_time_minutes) VALUES
--- (1, 1, 'Introduction to Java', 'text', 'Java is a high-level, class-based, object-oriented programming language...', 30),
--- (1, 2, 'Variables and Data Types', 'text', 'Variables are containers for storing data values. In Java, there are different types...', 45),
--- (1, 3, 'Control Flow Statements', 'text', 'Control flow statements regulate the order in which statements are executed...', 40),
--- (2, 1, 'Verbal Communication', 'text', 'Effective verbal communication involves speaking clearly and concisely...', 30),
--- (2, 2, 'Non-Verbal Communication', 'text', 'Non-verbal cues include body language, facial expressions, and gestures...', 35);
+INSERT INTO modules (course_id, module_order, title, content_type, content, estimated_time_minutes) VALUES
+(1, 1, 'Introduction to Java', 'text', 'Java is a high-level, class-based, object-oriented programming language...', 30),
+(1, 2, 'Variables and Data Types', 'text', 'Variables are containers for storing data values. In Java, there are different types...', 45),
+(1, 3, 'Control Flow Statements', 'text', 'Control flow statements regulate the order in which statements are executed...', 40),
+(2, 1, 'Verbal Communication', 'text', 'Effective verbal communication involves speaking clearly and concisely...', 30),
+(2, 2, 'Non-Verbal Communication', 'text', 'Non-verbal cues include body language, facial expressions, and gestures...', 35);
 
--- INSERT INTO user_enrollments (user_id, course_id, progress_percentage, status) VALUES
--- (2, 1, 65.00, 'in_progress'),
--- (2, 2, 30.00, 'in_progress'),
--- (3, 2, 85.00, 'in_progress'),
--- (3, 3, 0.00, 'enrolled');
+INSERT INTO user_enrollments (user_id, course_id, progress_percentage, status) VALUES
+(2, 1, 65.00, 'in_progress'),
+(2, 2, 30.00, 'in_progress'),
+(3, 2, 85.00, 'in_progress'),
+(3, 3, 0.00, 'enrolled');
